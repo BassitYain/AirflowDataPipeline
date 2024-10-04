@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from airflow import DAG
-from airflow.operators.bash_operator import BashOperator
-from airflow.operators import PythonOperator
+from airflow.operators.bash import BashOperator
+from airflow.operators.python import PythonOperator
 import os
 from airflow.hooks import PostgresHook
 import json
@@ -59,9 +59,9 @@ def load_data(ds, **kwargs):
 
 # Define the default dag arguments.
 default_args = {
-		'owner' : 'Mike',
+		'owner' : 'TeQuan',
 		'depends_on_past' :False,
-		'email' :['mdh266@gmail.com'],
+		'email' :['bassityain@gmail.com'],
 		'email_on_failure': False,
 		'email_on_retry': False,
 		'retries': 5,

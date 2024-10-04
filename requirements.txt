@@ -1,0 +1,6 @@
+apache-airflow
+psycopg2
+SQLAlchemy
+SQLAlchemy-Utils
+config
+numpy

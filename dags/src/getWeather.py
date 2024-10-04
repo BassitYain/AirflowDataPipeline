@@ -1,5 +1,5 @@
 import requests
-import config as C 
+import config as C  # type: ignore
 import json
 from datetime import datetime 
 import os
@@ -12,9 +12,9 @@ def get_weather():
 	"""
 
 	# My API key is defined in my config.py file.
-	paramaters = {'q': 'Brooklyn, USA', 'appid':C.API_KEY}
-
-	result     = requests.get("http://api.openweathermap.org/data/2.5/weather?", paramaters)
+	paramaters = {'q': 'Paris, France', 'appid':C.API_KEY}
+	
+	result     = requests.get("https://api.openweathermap.org/data/2.5/weather?", paramaters)
 
 	# If the API call was sucessful, get the json and dump it to a file with 
 	# today's date as the title.
@@ -28,7 +28,7 @@ def get_weather():
 		with open(tot_name, 'w') as outputfile:
 			json.dump(json_data, outputfile)
 	else :
-		print "Error In API call."
+		print("Error In API call.")
 
 
 if __name__ == "__main__":

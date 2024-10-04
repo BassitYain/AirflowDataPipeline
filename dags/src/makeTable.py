@@ -6,22 +6,21 @@ def make_database():
     """
     Make the Postgres database and create the table.
     """
-
-	dbname    = 'WeatherDB'
-	username  = 'Mike'
-	tablename = 'weather_table'
+    dbname    = 'tequan'
+    username  = 'tequan'
+    tablename = 'weather_table'
 
     # Note: I didn't make a password.
-	engine    = create_engine('postgresql+psycopg2://%s@localhost/%s'%(username,dbname))
+    engine    = create_engine('postgresql+psycopg2://%s@localhost/%s'%(username,dbname))
 
-	if not database_exists(engine.url):
-   		create_database(engine.url)
+    if not database_exists(engine.url):
+   	    create_database(engine.url)
 
-	conn = psycopg2.connect(database = dbname, user = username)
+    conn = psycopg2.connect(database = dbname, user = username)
 
-	curr = conn.cursor()
+    curr = conn.cursor()
 
-	create_table = """CREATE TABLE IF NOT EXISTS %s
+    create_table = """CREATE TABLE IF NOT EXISTS %s
                 (
                     city         TEXT, 
                     country      TEXT,
@@ -37,9 +36,9 @@ def make_database():
                 )
                 """ % tablename
 
-	curr.execute(create_table)
-	conn.commit()
-	conn.close()
+    curr.execute(create_table)
+    conn.commit()
+    conn.close()
 
 if __name__ == "__main__":
 	make_database()
